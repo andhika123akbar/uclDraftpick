@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcement Schedule Control</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+        }
+        .tab-button:hover {
+            color: #2c3e50;
+        }
+        .tab-button.active {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+        }
+        .tab-content {
+            display: none;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .schedule-form {
+            text-align: center;
+        }
+        .team-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .team {
+            width: 48%;
+        }
+        .team img {
+            max-width: 80px;
+            max-height: 80px;
+            margin: 10px auto;
+            display: block;
+            border-radius: 4px;
+        }
+        input[type="text"], input[type="time"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        input[type="file"] {
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        label {
+            font-size: 0.9em;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .checkbox-container {
+            margin-bottom: 20px;
+        }
+        button.reset {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        button.reset:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Schedule Control</h1>
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(1)">Schedule 1</button>
+        <button class="tab-button" onclick="openTab(2)">Schedule 2</button>
+        <button class="tab-button" onclick="openTab(3)">Schedule 3</button>
+        <button class="tab-button" onclick="openTab(4)">Schedule 4</button>
+    </div>
+
+    <div id="schedule-1" class="tab-content active">
+        <div class="schedule-form">
+            <div class="checkbox-container">
+                <label><input type="checkbox" id="show-1" onchange="saveSchedule(1)"> Show on Display</label>
+            </div>
+            <div class="team-container">
+                <div class="team">
+                    <label>Logo 1</label>
+                    <img id="logo1-1" src="Assets/Other/transparent.png" alt="Logo 1">
+                    <input type="file" id="logo1-file-1" accept="image/*" onchange="updateLogo(1, 1)">
+                    <label>Team Name 1</label>
+                    <input type="text" id="team1-1" oninput="saveSchedule(1)" placeholder="Team Name 1">
+                    <label>Score 1</label>
+                    <input type="text" id="score1-1" oninput="saveSchedule(1)" placeholder="Score 1">
+                </div>
+                <div class="team">
+                    <label>Logo 2</label>
+                    <img id="logo2-1" src="Assets/Other/transparent.png" alt="Logo 2">
+                    <input type="file" id="logo2-file-1" accept="image/*" onchange="updateLogo(1, 2)">
+                    <label>Team Name 2</label>
+                    <input type="text" id="team2-1" oninput="saveSchedule(1)" placeholder="Team Name 2">
+                    <label>Score 2</label>
+                    <input type="text" id="score2-1" oninput="saveSchedule(1)" placeholder="Score 2">
+                </div>
+            </div>
+            <label>Text Input</label>
+            <input type="text" id="time-1" oninput="saveSchedule(1)" placeholder="Enter any text">
+            <button class="reset" onclick="resetSchedule(1)">Reset Schedule</button>
+        </div>
+    </div>
+
+    <div id="schedule-2" class="tab-content">
+        <div class="schedule-form">
+            <div class="checkbox-container">
+                <label><input type="checkbox" id="show-2" onchange="saveSchedule(2)"> Show on Display</label>
+            </div>
+            <div class="team-container">
+                <div class="team">
+                    <label>Logo 1</label>
+                    <img id="logo1-2" src="Assets/Other/transparent.png" alt="Logo 1">
+                    <input type="file" id="logo1-file-2" accept="image/*" onchange="updateLogo(2, 1)">
+                    <label>Team Name 1</label>
+                    <input type="text" id="team1-2" oninput="saveSchedule(2)" placeholder="Team Name 1">
+                    <label>Score 1</label>
+                    <input type="text" id="score1-2" oninput="saveSchedule(2)" placeholder="Score 1">
+                </div>
+                <div class="team">
+                    <label>Logo 2</label>
+                    <img id="logo2-2" src="Assets/Other/transparent.png" alt="Logo 2">
+                    <input type="file" id="logo2-file-2" accept="image/*" onchange="updateLogo(2, 2)">
+                    <label>Team Name 2</label>
+                    <input type="text" id="team2-2" oninput="saveSchedule(2)" placeholder="Team Name 2">
+                    <label>Score 2</label>
+                    <input type="text" id="score2-2" oninput="saveSchedule(2)" placeholder="Score 2">
+                </div>
+            </div>
+            <label>Text Input</label>
+            <input type="text" id="time-2" oninput="saveSchedule(2)" placeholder="Enter any text">
+            <button class="reset" onclick="resetSchedule(2)">Reset Schedule</button>
+        </div>
+    </div>
+
+    <div id="schedule-3" class="tab-content">
+        <div class="schedule-form">
+            <div class="checkbox-container">
+                <label><input type="checkbox" id="show-3" onchange="saveSchedule(3)"> Show on Display</label>
+            </div>
+            <div class="team-container">
+                <div class="team">
+                    <label>Logo 1</label>
+                    <img id="logo1-3" src="Assets/Other/transparent.png" alt="Logo 1">
+                    <input type="file" id="logo1-file-3" accept="image/*" onchange="updateLogo(3, 1)">
+                    <label>Team Name 1</label>
+                    <input type="text" id="team1-3" oninput="saveSchedule(3)" placeholder="Team Name 1">
+                    <label>Score 1</label>
+                    <input type="text" id="score1-3" oninput="saveSchedule(3)" placeholder="Score 1">
+                </div>
+                <div class="team">
+                    <label>Logo 2</label>
+                    <img id="logo2-3" src="Assets/Other/transparent.png" alt="Logo 2">
+                    <input type="file" id="logo2-file-3" accept="image/*" onchange="updateLogo(3, 2)">
+                    <label>Team Name 2</label>
+                    <input type="text" id="team2-3" oninput="saveSchedule(3)" placeholder="Team Name 2">
+                    <label>Score 2</label>
+                    <input type="text" id="score2-3" oninput="saveSchedule(3)" placeholder="Score 2">
+                </div>
+            </div>
+            <label>Text Input</label>
+            <input type="text" id="time-3" oninput="saveSchedule(3)" placeholder="Enter any text">
+            <button class="reset" onclick="resetSchedule(3)">Reset Schedule</button>
+        </div>
+    </div>
+
+    <div id="schedule-4" class="tab-content">
+        <div class="schedule-form">
+            <div class="checkbox-container">
+                <label><input type="checkbox" id="show-4" onchange="saveSchedule(4)"> Show on Display</label>
+            </div>
+            <div class="team-container">
+                <div class="team">
+                    <label>Logo 1</label>
+                    <img id="logo1-4" src="Assets/Other/transparent.png" alt="Logo 1">
+                    <input type="file" id="logo1-file-4" accept="image/*" onchange="updateLogo(4, 1)">
+                    <label>Team Name 1</label>
+                    <input type="text" id="team1-4" oninput="saveSchedule(4)" placeholder="Team Name 1">
+                    <label>Score 1</label>
+                    <input type="text" id="score1-4" oninput="saveSchedule(4)" placeholder="Score 1">
+                </div>
+                <div class="team">
+                    <label>Logo 2</label>
+                    <img id="logo2-4" src="Assets/Other/transparent.png" alt="Logo 2">
+                    <input type="file" id="logo2-file-4" accept="image/*" onchange="updateLogo(4, 2)">
+                    <label>Team Name 2</label>
+                    <input type="text" id="team2-4" oninput="saveSchedule(4)" placeholder="Team Name 2">
+                    <label>Score 2</label>
+                    <input type="text" id="score2-4" oninput="saveSchedule(4)" placeholder="Score 2">
+                </div>
+            </div>
+            <label>Text Input</label>
+            <input type="text" id="time-4" oninput="saveSchedule(4)" placeholder="Enter any text">
+            <button class="reset" onclick="resetSchedule(4)">Reset Schedule</button>
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_LOGO = 'Assets/Other/transparent.png';
+
+        function openTab(scheduleNum) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+            document.getElementById(`schedule-${scheduleNum}`).classList.add('active');
+            document.querySelector(`.tab-button:nth-child(${scheduleNum})`).classList.add('active');
+        }
+
+        function updateLogo(scheduleNum, logoNum) {
+            const fileInput = document.getElementById(`logo${logoNum}-file-${scheduleNum}`);
+            const imgElement = document.getElementById(`logo${logoNum}-${scheduleNum}`);
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgElement.src = e.target.result;
+                    saveSchedule(scheduleNum);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function saveSchedule(scheduleNum) {
+            const schedule = {
+                show: document.getElementById(`show-${scheduleNum}`).checked,
+                time: document.getElementById(`time-${scheduleNum}`).value,
+                logo1: document.getElementById(`logo1-${scheduleNum}`).src,
+                team1: document.getElementById(`team1-${scheduleNum}`).value,
+                score1: document.getElementById(`score1-${scheduleNum}`).value,
+                logo2: document.getElementById(`logo2-${scheduleNum}`).src,
+                team2: document.getElementById(`team2-${scheduleNum}`).value,
+                score2: document.getElementById(`score2-${scheduleNum}`).value
+            };
+            localStorage.setItem(`schedule-${scheduleNum}`, JSON.stringify(schedule));
+        }
+
+        function resetSchedule(scheduleNum) {
+            document.getElementById(`show-${scheduleNum}`).checked = false;
+            document.getElementById(`time-${scheduleNum}`).value = '';
+            document.getElementById(`logo1-${scheduleNum}`).src = DEFAULT_LOGO;
+            document.getElementById(`logo1-file-${scheduleNum}`).value = '';
+            document.getElementById(`team1-${scheduleNum}`).value = '';
+            document.getElementById(`score1-${scheduleNum}`).value = '';
+            document.getElementById(`logo2-${scheduleNum}`).src = DEFAULT_LOGO;
+            document.getElementById(`logo2-file-${scheduleNum}`).value = '';
+            document.getElementById(`team2-${scheduleNum}`).value = '';
+            document.getElementById(`score2-${scheduleNum}`).value = '';
+            localStorage.removeItem(`schedule-${scheduleNum}`);
+        }
+
+        function loadSchedules() {
+            for (let i = 1; i <= 4; i++) {
+                const schedule = JSON.parse(localStorage.getItem(`schedule-${i}`)) || {};
+                document.getElementById(`show-${i}`).checked = schedule.show || false;
+                document.getElementById(`time-${i}`).value = schedule.time || '';
+                document.getElementById(`logo1-${i}`).src = schedule.logo1 || DEFAULT_LOGO;
+                document.getElementById(`team1-${i}`).value = schedule.team1 || '';
+                document.getElementById(`score1-${i}`).value = schedule.score1 || '';
+                document.getElementById(`logo2-${i}`).src = schedule.logo2 || DEFAULT_LOGO;
+                document.getElementById(`team2-${i}`).value = schedule.team2 || '';
+                document.getElementById(`score2-${i}`).value = schedule.score2 || '';
+            }
+        }
+
+        window.onload = loadSchedules;
+    </script>
+</body>
+</html>

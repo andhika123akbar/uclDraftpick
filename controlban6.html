@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="control.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+</head>
+
+<body>
+
+<div class="button">
+    <button onclick="resetNames()">Reset Nick</button>
+    <button onclick="resetImages()">Reset Team Logo</button>
+    <button onclick="switchNames()">Switch Team Nickname</button>
+    <button onclick="switchImages()">Switch Team Logo</button>
+</div>
+
+    <audio id="hero-voice" hidden></audio>
+
+<div class="mainbox">
+
+<div class="blueside">
+
+    <div class="blueteamname">
+        <div class="namebox">BLUESIDE AND LOGO</div>
+        <div id="name-box-1" class="name-box"><input type="text" id="name-input-1"></div>
+        <div id="name-box-2" class="name-box"><input type="text" id="name-input-2">SCORE</div>
+    
+        <div class="container">
+            <label>Upload Logo 1:</label>
+            <input type="file" id="file1" accept="image/*">
+ 
+    
+    
+        </div>
+    </div>
+
+    <div class="bluenick">
+        <div class="namebox">NICKNAME</div>
+        <!-- Kotak input nama -->
+        
+        <div id="name-box-3" class="name-box"><input type="text" id="name-input-3"></div>
+        <div id="name-box-4" class="name-box"><input type="text" id="name-input-4"></div>
+        <div id="name-box-5" class="name-box"><input type="text" id="name-input-5"></div>
+        <div id="name-box-6" class="name-box"><input type="text" id="name-input-6"></div>
+        <div id="name-box-7" class="name-box"><input type="text" id="name-input-7"></div>
+       
+    </div>
+
+
+    <div id="dropdowns">
+
+        <div class="namebox">HEROPICK</div>
+
+    <div id="dropdowns-1" class="dropdown-container">
+            <input type="text" id="search-1" class="dropdown" placeholder="Pick 1" oninput="filterDropdown(1)">
+            <button class="swap-button" onclick="selectDropdown(1)">Swap</button>
+            <div id="dropdown-items-1" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-2" class="dropdown-container">
+            <input type="text" id="search-2" class="dropdown" placeholder="Pick 2" oninput="filterDropdown(2)">
+            <button class="swap-button" onclick="selectDropdown(2)">Swap</button>
+            <div id="dropdown-items-2" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-3" class="dropdown-container">
+            <input type="text" id="search-3" class="dropdown" placeholder="Pick 3" oninput="filterDropdown(3)">
+            <button class="swap-button" onclick="selectDropdown(3)">Swap</button>
+            <div id="dropdown-items-3" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-4" class="dropdown-container">
+            <input type="text" id="search-4" class="dropdown" placeholder="Pick 4" oninput="filterDropdown(4)">
+            <button class="swap-button" onclick="selectDropdown(4)">Swap</button>
+            <div id="dropdown-items-4" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-5" class="dropdown-container">
+            <input type="text" id="search-5" class="dropdown" placeholder="Pick 5" oninput="filterDropdown(5)">
+            <button class="swap-button" onclick="selectDropdown(5)">Swap</button>
+            <div id="dropdown-items-5" class="dropdown-items"></div>
+        </div>
+    </div>
+
+    <div id="dropdowns">
+
+        <div class="namebox">BANNING</div>
+
+        <div id="dropdowns-11" class="dropdown-container">
+            <input type="text" id="search-11" class="dropdown" placeholder="Ban 1" oninput="filterDropdown(11)">
+            <button class="swap-button" onclick="selectDropdown(11)">Swap</button>
+            <div id="dropdown-items-11" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-12" class="dropdown-container">
+            <input type="text" id="search-12" class="dropdown" placeholder="Ban 2" oninput="filterDropdown(12)">
+            <button class="swap-button" onclick="selectDropdown(12)">Swap</button>
+            <div id="dropdown-items-12" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-13" class="dropdown-container">
+            <input type="text" id="search-13" class="dropdown" placeholder="Ban 3" oninput="filterDropdown(13)">
+            <button class="swap-button" onclick="selectDropdown(13)">Swap</button>
+            <div id="dropdown-items-13" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-14" class="dropdown-container">
+            <input type="text" id="search-14" class="dropdown" placeholder="Ban 4" oninput="filterDropdown(14)">
+            <button class="swap-button" onclick="selectDropdown(14)">Swap</button>
+            <div id="dropdown-items-14" class="dropdown-items"></div>
+        </div>
+        <div id="dropdowns-15" class="dropdown-container">
+            <input type="text" id="search-15" class="dropdown" placeholder="Ban 5" oninput="filterDropdown(15)">
+            <button class="swap-button" onclick="selectDropdown(15)">Swap</button>
+            <div id="dropdown-items-15" class="dropdown-items"></div>
+        </div>
+    </div>
+
+    
+<div>
+
+
+</div>
+
+</div>
+<div class="redside">
+
+        <div class="blueteamname">
+            <div class="namebox">REDSIDE AND LOGO</div>
+            <div id="name-box-8" class="name-box"><input type="text" id="name-input-8"></div>
+            <div id="name-box-9" class="name-box"><input type="text" id="name-input-9">SCORE</div>
+        
+            <div class="container">
+            
+                <label>Red Side Logo:</label>
+                <input type="file" id="file2" accept="image/*">
+
+            </div>
+        </div>
+    
+        <div class="bluenick">
+            <div class="namebox">NICKNAME</div>
+            <!-- Kotak input nama -->
+            
+            <div id="name-box-3" class="name-box"><input type="text" id="name-input-10"></div>
+            <div id="name-box-4" class="name-box"><input type="text" id="name-input-11"></div>
+            <div id="name-box-5" class="name-box"><input type="text" id="name-input-12"></div>
+            <div id="name-box-6" class="name-box"><input type="text" id="name-input-13"></div>
+            <div id="name-box-7" class="name-box"><input type="text" id="name-input-14"></div>
+           
+        </div>
+    
+    
+        <div id="dropdowns">
+    
+            <div class="namebox">HEROPICK</div>
+    
+            <div id="dropdowns-6" class="dropdown-container">
+                <input type="text" id="search-6" class="dropdown" placeholder="Pick 1" oninput="filterDropdown(6)">
+                <button class="swap-button" onclick="selectDropdown(6)">Swap</button>
+                <div id="dropdown-items-6" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-7" class="dropdown-container">
+                <input type="text" id="search-7" class="dropdown" placeholder="Pick 2" oninput="filterDropdown(7)">
+                <button class="swap-button" onclick="selectDropdown(7)">Swap</button>
+                <div id="dropdown-items-7" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-8" class="dropdown-container">
+                <input type="text" id="search-8" class="dropdown" placeholder="Pick 3" oninput="filterDropdown(8)">
+                <button class="swap-button" onclick="selectDropdown(8)">Swap</button>
+                <div id="dropdown-items-8" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-9" class="dropdown-container">
+                <input type="text" id="search-9" class="dropdown" placeholder="Pick 4" oninput="filterDropdown(9)">
+                <button class="swap-button" onclick="selectDropdown(9)">Swap</button>
+                <div id="dropdown-items-9" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-10" class="dropdown-container">
+                <input type="text" id="search-10" class="dropdown" placeholder="Pick 5" oninput="filterDropdown(10)">
+                <button class="swap-button" onclick="selectDropdown(10)">Swap</button>
+                <div id="dropdown-items-10" class="dropdown-items"></div>
+            </div>
+        </div>
+
+        <div id="dropdowns">
+    
+            <div class="namebox">BANNING</div>
+    
+            <div id="dropdowns-16" class="dropdown-container">
+                <input type="text" id="search-16" class="dropdown" placeholder="Ban 1" oninput="filterDropdown(16)">
+                <button class="swap-button" onclick="selectDropdown(16)">Swap</button>
+                <div id="dropdown-items-16" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-17" class="dropdown-container">
+                <input type="text" id="search-17" class="dropdown" placeholder="Ban 2" oninput="filterDropdown(17)">
+                <button class="swap-button" onclick="selectDropdown(17)">Swap</button>
+                <div id="dropdown-items-17" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-18" class="dropdown-container">
+                <input type="text" id="search-18" class="dropdown" placeholder="Ban 3" oninput="filterDropdown(18)">
+                <button class="swap-button" onclick="selectDropdown(18)">Swap</button>
+                <div id="dropdown-items-18" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-19" class="dropdown-container">
+                <input type="text" id="search-19" class="dropdown" placeholder="Ban 4" oninput="filterDropdown(19)">
+                <button class="swap-button" onclick="selectDropdown(19)">Swap</button>
+                <div id="dropdown-items-19" class="dropdown-items"></div>
+            </div>
+            <div id="dropdowns-20" class="dropdown-container">
+                <input type="text" id="search-20" class="dropdown" placeholder="Ban 5" oninput="filterDropdown(20)">
+                <button class="swap-button" onclick="selectDropdown(20)">Swap</button>
+                <div id="dropdown-items-20" class="dropdown-items"></div>
+            </div>
+        </div>
+</div>
+</div>
+
+    <h2>DRAFT CONTROL</h2>
+
+<div class="timercontrol">
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="nextPhase">Force Next Phase</button>
+    <button id="reset">Reset Draft</button>
+    <button id="correction">Correction</button>
+
+</div>
+
+</body>
+
+<script src="/script/controlnicknamelogo.js"></script>
+<script src="/script/herodropdownban6.js"> </script>
+</html>
